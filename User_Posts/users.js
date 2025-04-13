@@ -1,16 +1,16 @@
 (async () => {
     try {
         const response = await fetch('https://jsonplaceholder.typicode.com/users');
-        const allUsers = await response.json(); // Tüm kullanıcıları sakla
+        const allUsers = await response.json(); 
 
         const userCardsContainer = document.getElementById('user-cards-container');
 
         const displayUsers = (usersToDisplay) => {
-            userCardsContainer.innerHTML = ''; // Önceki kartları temizle
+            userCardsContainer.innerHTML = ''; 
             usersToDisplay.forEach(user => {
                 const card = document.createElement('div');
                 card.classList.add('user-card');
-                card.dataset.userId = user.id; // Kartın ID'sini sakla (isteğe bağlı)
+                card.dataset.userId = user.id; 
 
                 const basicInfoDiv = document.createElement('div');
                 basicInfoDiv.classList.add('card-section');
@@ -84,7 +84,6 @@
             const clickedElement = event.target;
             if (clickedElement.classList.contains('user-id-element')) {
                 const userId = parseInt(clickedElement.textContent.split(':')[1].trim());
-                // Tıklanan ID'ye sahip kullanıcıları filtrele (aslında sadece bir tane olacak)
                 const filteredUsers = allUsers.filter(user => user.id === userId);
                 displayUsers(filteredUsers);
             }
